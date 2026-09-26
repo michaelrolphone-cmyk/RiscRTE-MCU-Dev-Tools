@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "upstream_repository": "michaelrolphone-cmyk/T5S3-Reader",
+  "upstream_branch": "master",
+  "tools": [
+    {
+      "id": "serial_monitor",
+      "version": "1.2.6",
+      "min_firmware_version": "1.2.31",
+      "source": "Apps/serial_monitor.c",
+      "manifest": "Apps/serial_monitor.json",
+      "classification": "mcu-dev-tool"
+    },
+    {
+      "id": "usb_debug",
+      "version": "0.1.1",
+      "min_firmware_version": "1.2.67",
+      "source": "Apps/usb_debug.c",
+      "manifest": "Apps/usb_debug.json",
+      "classification": "mcu-dev-tool"
+    },
+    {
+      "id": "esp_rom_flasher",
+      "version": "1.1.0",
+      "min_firmware_version": "1.2.69",
+      "source": "Apps/esp_rom_flasher.c",
+      "manifest": "Apps/esp_rom_flasher.json",
+      "classification": "mcu-dev-tool"
+    }
+  ]
+}
