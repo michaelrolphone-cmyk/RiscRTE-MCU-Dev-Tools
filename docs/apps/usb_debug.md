@@ -66,3 +66,14 @@ These are implementation limits in the current source, not general RiscRTE USB l
 
 - `Apps/usb_debug.c`
 - `Apps/usb_debug.json`
+
+## Independent migration verification
+
+Source, manifest and recorded helpers match Reader master
+`3300229d0a232b4e6047a7c93b2f518c033c3cfa`. Independent builds preserve the
+historical unstripped build profile and exactly reproduce this app's existing
+published ELF. Versions remain unchanged because source, installed metadata and
+published payload bytes are unchanged. See [build/tests](../BUILD.md),
+[artifact comparison](../release-parity.json) and
+[readiness/removal criteria](../MIGRATION_READINESS.md). Current-master parity
+does not imply future U1 packaging/runtime acceptance or hardware qualification.

@@ -1,0 +1,61 @@
+{
+  "reader_commit": "3300229d0a232b4e6047a7c93b2f518c033c3cfa",
+  "files": [
+    {
+      "path": "Apps/serial_monitor.c",
+      "baseline_blob": "d32911812d47d8ed69d0e9b8d7bd8c741835df58",
+      "external_blob": "d32911812d47d8ed69d0e9b8d7bd8c741835df58",
+      "upstream_blob": "d32911812d47d8ed69d0e9b8d7bd8c741835df58",
+      "state": "unchanged"
+    },
+    {
+      "path": "Apps/serial_monitor.json",
+      "baseline_blob": "e87ad5a97e6a16b12c1cc78b2c02c5249b5c09a6",
+      "external_blob": "e87ad5a97e6a16b12c1cc78b2c02c5249b5c09a6",
+      "upstream_blob": "e87ad5a97e6a16b12c1cc78b2c02c5249b5c09a6",
+      "state": "unchanged"
+    },
+    {
+      "path": "Apps/serial_monitor_implementation.inc",
+      "baseline_blob": "f0e590f0222d7687fb4e3847ba1153dab586d6f9",
+      "external_blob": "f0e590f0222d7687fb4e3847ba1153dab586d6f9",
+      "upstream_blob": "f0e590f0222d7687fb4e3847ba1153dab586d6f9",
+      "state": "unchanged"
+    },
+    {
+      "path": "Apps/usb_debug.c",
+      "baseline_blob": "76157ba88ca1851cd846cca49627e0aa535e6ff5",
+      "external_blob": "76157ba88ca1851cd846cca49627e0aa535e6ff5",
+      "upstream_blob": "76157ba88ca1851cd846cca49627e0aa535e6ff5",
+      "state": "unchanged"
+    },
+    {
+      "path": "Apps/usb_debug.json",
+      "baseline_blob": "49fe5b33c8a549387152cffbc29b0ef97e2f2c2a",
+      "external_blob": "49fe5b33c8a549387152cffbc29b0ef97e2f2c2a",
+      "upstream_blob": "49fe5b33c8a549387152cffbc29b0ef97e2f2c2a",
+      "state": "unchanged"
+    },
+    {
+      "path": "Apps/esp_rom_flasher.c",
+      "baseline_blob": "19c8cb2a1918fb7b8453ea61802c25782c46a925",
+      "external_blob": "19c8cb2a1918fb7b8453ea61802c25782c46a925",
+      "upstream_blob": "19c8cb2a1918fb7b8453ea61802c25782c46a925",
+      "state": "unchanged"
+    },
+    {
+      "path": "Apps/esp_rom_flasher.json",
+      "baseline_blob": "8a21fb19b852629bf29dd809d654e09b07ad7fb8",
+      "external_blob": "8a21fb19b852629bf29dd809d654e09b07ad7fb8",
+      "upstream_blob": "8a21fb19b852629bf29dd809d654e09b07ad7fb8",
+      "state": "unchanged"
+    },
+    {
+      "path": "Apps/esp_rom_md5.h",
+      "baseline_blob": "d52313ed08b540a575dccc957ee0032c19bbaa98",
+      "external_blob": "d52313ed08b540a575dccc957ee0032c19bbaa98",
+      "upstream_blob": "d52313ed08b540a575dccc957ee0032c19bbaa98",
+      "state": "unchanged"
+    }
+  ]
+}

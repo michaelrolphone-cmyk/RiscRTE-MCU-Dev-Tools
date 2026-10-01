@@ -1,0 +1,7 @@
+{
+  "serial_monitor": "serial_monitor",
+  "serial_monitor_baud": "serial_monitor",
+  "serial_monitor_no_device": "serial_monitor",
+  "serial_monitor_launch_contract": null,
+  "usb_debug": "usb_debug"
+}
