@@ -14,30 +14,22 @@ During migration, `michaelrolphone-cmyk/T5S3-Reader` is a strictly read-only ups
 - [USB Debug](docs/apps/usb_debug.md) — USB device/descriptor inspection and diagnostic logging.
 - [Firmware Flasher](docs/apps/esp_rom_flasher.md) — ESP ROM and MSP430FR programming workflows.
 
-## Repository tree
+## Independent builds and migration readiness
 
-```text
-Apps/
-  esp_rom_flasher.c
-  esp_rom_flasher.json
-  esp_rom_md5.h
-  serial_monitor.c
-  serial_monitor.json
-  serial_monitor_implementation.inc
-  usb_debug.c
-  usb_debug.json
+- [Pinned build instructions and focused test coverage](docs/BUILD.md)
+- [Readiness index and safe Reader removal criteria](docs/MIGRATION_READINESS.md)
+- [Eight-file source/helper drift audit](docs/source-drift.json)
+- [Published ELF byte-parity evidence](docs/release-parity.json)
 
-docs/
-  apps/
-    esp_rom_flasher.md
-    serial_monitor.md
-    usb_debug.md
-
-mcu-dev-tools-manifest.json
-```
+Builds need no Reader checkout. CI emits development artifacts only, using the
+historical unstripped profile that reproduces all three current app releases.
+No live catalog or release is written.
 
 ## Documentation and parity policy
 
-Each migrated tool must have one dedicated documentation page derived from its current source, manifest, ABI headers, and actual behavior. The page must document interfaces/capabilities, workflows, dependencies, limits, persistence, failure handling, and helper files where applicable. Unimplemented or future behavior is not treated as specification.
-
-A tool is not parity-complete until source, manifest/version, build/release behavior, and documentation are aligned with the read-only upstream source.
+Each tool has a dedicated source-derived page covering interfaces/capabilities,
+workflows, dependencies, limits, persistence and failure handling. Treat future
+U1 requirements separately from implemented current-master behavior. Source,
+manifest, build/release bytes and documentation must all be audited before
+parity is claimed. Record source baselines, preserve external-only fixes and
+reconcile conflicts instead of blindly copying upstream.

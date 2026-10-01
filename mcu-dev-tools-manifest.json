@@ -7,25 +7,53 @@
       "id": "serial_monitor",
       "version": "1.2.6",
       "min_firmware_version": "1.2.31",
+      "classification": "mcu-dev-tool",
+      "file_name": "serial_monitor.elf",
+      "source_path": "Apps/serial_monitor.c",
+      "manifest_path": "Apps/serial_monitor.json",
+      "upstream_source_sha": "d32911812d47d8ed69d0e9b8d7bd8c741835df58",
+      "upstream_manifest_sha": "e87ad5a97e6a16b12c1cc78b2c02c5249b5c09a6",
+      "additional_sources": [
+        {
+          "path": "Apps/serial_monitor_implementation.inc",
+          "upstream_blob": "f0e590f0222d7687fb4e3847ba1153dab586d6f9"
+        }
+      ],
       "source": "Apps/serial_monitor.c",
-      "manifest": "Apps/serial_monitor.json",
-      "classification": "mcu-dev-tool"
+      "manifest": "Apps/serial_monitor.json"
     },
     {
       "id": "usb_debug",
       "version": "0.1.1",
       "min_firmware_version": "1.2.67",
+      "classification": "mcu-dev-tool",
+      "file_name": "usb_debug.elf",
+      "source_path": "Apps/usb_debug.c",
+      "manifest_path": "Apps/usb_debug.json",
+      "upstream_source_sha": "76157ba88ca1851cd846cca49627e0aa535e6ff5",
+      "upstream_manifest_sha": "49fe5b33c8a549387152cffbc29b0ef97e2f2c2a",
       "source": "Apps/usb_debug.c",
-      "manifest": "Apps/usb_debug.json",
-      "classification": "mcu-dev-tool"
+      "manifest": "Apps/usb_debug.json"
     },
     {
       "id": "esp_rom_flasher",
       "version": "1.1.0",
       "min_firmware_version": "1.2.69",
+      "classification": "mcu-dev-tool",
+      "file_name": "esp_rom_flasher.elf",
+      "source_path": "Apps/esp_rom_flasher.c",
+      "manifest_path": "Apps/esp_rom_flasher.json",
+      "upstream_source_sha": "19c8cb2a1918fb7b8453ea61802c25782c46a925",
+      "upstream_manifest_sha": "8a21fb19b852629bf29dd809d654e09b07ad7fb8",
+      "additional_sources": [
+        {
+          "path": "Apps/esp_rom_md5.h",
+          "upstream_blob": "d52313ed08b540a575dccc957ee0032c19bbaa98"
+        }
+      ],
       "source": "Apps/esp_rom_flasher.c",
-      "manifest": "Apps/esp_rom_flasher.json",
-      "classification": "mcu-dev-tool"
+      "manifest": "Apps/esp_rom_flasher.json"
     }
-  ]
+  ],
+  "upstream_commit": "3300229d0a232b4e6047a7c93b2f518c033c3cfa"
 }

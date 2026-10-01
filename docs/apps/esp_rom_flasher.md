@@ -28,7 +28,7 @@ The app scans SD-visible files and recognizes:
 
 The current UI supports up to 64 image entries.
 
-ESP programming expects a merged ESP image positioned for programming from address 0. The app opens the image through `T5StreamApi` and passes the stream and image size to the firmware-owned ESP programmer.
+ESP programming expects a merged ESP image positioned for programming from address 0. The app opens the image through `T5StreamApi` and passes the stream and image size to the current runtime ESP programming API. The current-master API boundary is preserved here; this does not establish prospective U1 provider ownership.
 
 MSP TI-TXT input is parsed incrementally from a stream. The parser validates address records, byte tokens, bounds, and the terminating `q` record before programming.
 
@@ -56,4 +56,15 @@ Actual electrical transport and target programming are not implemented in the ap
 
 - `Apps/esp_rom_flasher.c`
 - `Apps/esp_rom_flasher.json`
-- `Apps/esp_rom_md5.h`
+- `Apps/esp_rom_md5.h` — retained historical helper; the current app does not include it or implement ESP MD5 locally
+
+## Independent migration verification
+
+Source, manifest and recorded helpers match Reader master
+`3300229d0a232b4e6047a7c93b2f518c033c3cfa`. Independent builds preserve the
+historical unstripped build profile and exactly reproduce this app's existing
+published ELF. Versions remain unchanged because source, installed metadata and
+published payload bytes are unchanged. See [build/tests](../BUILD.md),
+[artifact comparison](../release-parity.json) and
+[readiness/removal criteria](../MIGRATION_READINESS.md). Current-master parity
+does not imply future U1 packaging/runtime acceptance or hardware qualification.
