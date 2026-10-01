@@ -2,6 +2,8 @@
 
 Audited 2026-10-01 against read-only Reader master
 `3300229d0a232b4e6047a7c93b2f518c033c3cfa`.
+Rechecked newer master `a5e2db59077cc889079668dc9cd7428b08bc32a1`: all
+app inputs, pinned SDK/fixtures and export-source inputs are unchanged.
 
 | Tool | Current-master source/manifest/helper | Version | Independent published-byte build | Documentation |
 | --- | --- | --- | --- | --- |
