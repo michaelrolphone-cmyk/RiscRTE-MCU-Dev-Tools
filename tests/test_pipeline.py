@@ -11,6 +11,7 @@ from check_baseline import ROOT, audit, check_sdk, classify, git_blob
 from check_release_parity import compare, validate_cohort
 from native_app_symbols import validate_imports
 from package_integrity import stamp_app_manifest
+from app_build_profile import build_profile_arguments, select_build_profile
 
 
 class PipelineTests(unittest.TestCase):
@@ -18,7 +19,31 @@ class PipelineTests(unittest.TestCase):
         check_sdk()
         rows = audit()['files']
         self.assertEqual(len(rows), 8)
-        self.assertTrue(all(row['state'] == 'unchanged' for row in rows))
+        converged = [row for row in rows if row['state'] == 'converged']
+        unchanged = [row for row in rows if row['state'] == 'unchanged']
+        self.assertEqual([row['path'] for row in converged],
+                         ['Apps/serial_monitor.json', 'Apps/usb_debug.json',
+                          'Apps/esp_rom_flasher.json'])
+        self.assertEqual(len(unchanged), 5)
+
+    def test_version_scoped_build_profiles(self):
+        baseline = json.loads((ROOT / 'sdk/release-baseline.json').read_text())
+        manifests = {row['id']: json.loads((ROOT / f"Apps/{row['id']}.json").read_text())
+                     for row in json.loads((ROOT / 'mcu-dev-tools-manifest.json').read_text())['tools']}
+        self.assertEqual({app_id: select_build_profile(manifest, baseline)
+                          for app_id, manifest in manifests.items()},
+                         {'serial_monitor': 'strip-unneeded', 'usb_debug': 'strip-unneeded',
+                          'esp_rom_flasher': 'strip-unneeded'})
+        self.assertEqual(build_profile_arguments('strip-unneeded'), ['--strip-unneeded'])
+        self.assertEqual(build_profile_arguments('unstripped'), [])
+        legacy = {'apps': [{'id': 'settings', 'file_name': 'settings.elf',
+                            'version': '1.0.0', 'build_profile': 'unstripped'}]}
+        self.assertEqual(select_build_profile({'file_name': 'settings.elf', 'version': '1.0.0'}, legacy),
+                         'unstripped')
+        with self.assertRaises(ValueError):
+            select_build_profile({'file_name': 'settings.elf', 'version': '1.0.1'}, legacy)
+        with self.assertRaises(ValueError):
+            build_profile_arguments('unknown')
 
     def test_three_way_conflict_preservation(self):
         for base, local, upstream, state in [('a','a','a','unchanged'), ('a','b','b','converged'),
