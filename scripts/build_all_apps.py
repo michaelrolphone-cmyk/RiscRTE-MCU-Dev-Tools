@@ -12,6 +12,7 @@ import sys
 from app_manifest import validate_manifest
 from check_baseline import check_sdk, git_blob
 from package_integrity import stamp_app_manifest
+from app_build_profile import build_profile_arguments, select_build_profile
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -50,6 +51,7 @@ def main():
     args = parser.parse_args()
     sdk = check_sdk()
     inventory = validate_inventory(json.loads((ROOT / 'mcu-dev-tools-manifest.json').read_text())['tools'])
+    release_baseline = json.loads((ROOT / 'sdk/release-baseline.json').read_text())
     apps = [app for app in inventory if not args.id or app['id'] == args.id]
     if not apps:
         parser.error('No matching app in the migration inventory')
@@ -70,8 +72,11 @@ def main():
         source = ROOT / app['source_path']
         elf = output / app['file_name']
         validate_manifest(source, elf)
+        source_manifest = json.loads(source.with_suffix('.json').read_text())
+        profile = select_build_profile(source_manifest, release_baseline)
         subprocess.run([sys.executable, str(ROOT / 'scripts/build_native_app.py'), str(source),
-                        '--output', str(elf), '--require-manifest'], check=True, timeout=120)
+                        '--output', str(elf), '--require-manifest',
+                        *build_profile_arguments(profile)], check=True, timeout=120)
         subprocess.run([str(validator), str(elf)], check=True, timeout=60)
         manifest = json.loads(elf.with_suffix('.json').read_text())
         manifest = stamp_app_manifest(manifest, elf)
@@ -79,7 +84,7 @@ def main():
             raise ValueError('Inventory/manifest version mismatch: ' + app['id'])
         elf.with_suffix('.json').write_text(json.dumps(manifest, separators=(',', ':'), ensure_ascii=False) + '\n')
         records.append({'id': app['id'], 'version': manifest['version'], 'file_name': elf.name,
-                        'sha256': manifest['sha256'], 'size_bytes': manifest['size_bytes'],
+                        'sha256': manifest['sha256'], 'size_bytes': manifest['size_bytes'], 'build_profile': profile,
                         'source_blob': git_blob(source.read_bytes()),
                         'manifest_blob': git_blob(source.with_suffix('.json').read_bytes()),
                         'additional_source_blobs': {item['path']: git_blob((ROOT / item['path']).read_bytes())
