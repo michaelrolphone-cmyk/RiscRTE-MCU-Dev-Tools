@@ -28,10 +28,14 @@ class PipelineTests(unittest.TestCase):
                          ['Apps/serial_monitor.json', 'Apps/usb_debug.json',
                           'Apps/esp_rom_flasher.json'])
         self.assertEqual(len(unchanged), 5)
-        self.assertEqual(sdk_provenance[0]['path'], 'lib/NativeApps/include/T5UiApi.h')
-        self.assertEqual(sdk_provenance[0]['state'], 'converged')
-        self.assertEqual(sdk_provenance[0]['upstream_commit'],
-                         '82caa0997e913f01c1f5f9ab942d056bc9f04a82')
+        self.assertEqual([row['path'] for row in sdk_provenance],
+                         ['lib/NativeApps/include/T5UiApi.h',
+                          'sdk/driver/RiscUsbControllerV1.h',
+                          'sdk/driver/RiscUsbInterruptV1.h'])
+        self.assertTrue(all(row['state'] == 'converged' and
+                            row['upstream_commit'] ==
+                            '82caa0997e913f01c1f5f9ab942d056bc9f04a82'
+                            for row in sdk_provenance))
 
     def test_version_scoped_build_profiles(self):
         baseline = json.loads((ROOT / 'sdk/release-baseline.json').read_text())
