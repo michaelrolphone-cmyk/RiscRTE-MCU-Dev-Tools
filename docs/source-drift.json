@@ -66,7 +66,25 @@
       "upstream_blob": "78434b75d4ee173f30035a351e5fd076d3af7bae",
       "upstream_commit": "82caa0997e913f01c1f5f9ab942d056bc9f04a82",
       "state": "converged",
-      "change": "Append-only optional get_viewport layout metrics; the external T5Stream borrow/close fix remains intact."
+      "change": "Append-only optional get_viewport layout metrics; no app call required."
+    },
+    {
+      "path": "sdk/driver/RiscUsbControllerV1.h",
+      "baseline_blob": "348b5b478f23f5893ff33dffcb4359f694712fd0",
+      "external_blob": "7b2ecba98cd431484296327c1d8d701cad431aea",
+      "upstream_blob": "7b2ecba98cd431484296327c1d8d701cad431aea",
+      "upstream_commit": "82caa0997e913f01c1f5f9ab942d056bc9f04a82",
+      "state": "converged",
+      "change": "Current Reader discovery ABI suffix; no external-only base delta was present."
+    },
+    {
+      "path": "sdk/driver/RiscUsbInterruptV1.h",
+      "baseline_blob": "ace65e02ed10daa9d452cbd6e789c6e0a6b01135",
+      "external_blob": "0c46bcae5f9bb970af95e0bf33dba0fe30958c87",
+      "upstream_blob": "0c46bcae5f9bb970af95e0bf33dba0fe30958c87",
+      "upstream_commit": "82caa0997e913f01c1f5f9ab942d056bc9f04a82",
+      "state": "converged",
+      "change": "Uses the current legacy-prefix discovery type name; binary prefix preserved."
     }
   ]
 }
