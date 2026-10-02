@@ -9,32 +9,45 @@
   "apps": [
     {
       "id": "serial_monitor",
-      "version": "1.2.6",
+      "version": "1.2.7",
       "file_name": "serial_monitor.elf",
-      "sha256": "76b13092fac7713676bd0aa77104b332e23dc406da7a629394ab2bdfe1830d5f",
-      "size": 24136,
-      "tag": "app-serial_monitor-v1.2.6",
-      "url": "https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/download/app-serial_monitor-v1.2.6/serial_monitor.elf"
+      "sha256": "c3b95464ade5005e98d060fd84d93d7682f72d1bdb7a502b0e4f4f6d76d2c67a",
+      "size": 20952,
+      "tag": "app-serial_monitor-v1.2.7",
+      "url": "https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/download/app-serial_monitor-v1.2.7/application-serial_monitor-1.2.7-xtensa-esp32s3.rte.zip",
+      "package_asset": "application-serial_monitor-1.2.7-xtensa-esp32s3.rte.zip",
+      "package_sha256": "b30f9eb12c1cfea80463816abcf35ec9358b6c43cdff642eeba45eba72409206",
+      "package_size": 22058,
+      "build_profile": "strip-unneeded"
     },
     {
       "id": "usb_debug",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "file_name": "usb_debug.elf",
-      "sha256": "a2f2db52df3821df24f2d4c168f14aaff93c5278624bf2e3e0071958fda102d7",
-      "size": 22988,
-      "tag": "app-usb_debug-v0.1.1",
-      "url": "https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/download/app-usb_debug-v0.1.1/usb_debug.elf"
+      "sha256": "09d8498d744293ada2cc3bed9443b3158fb0da5c91bcf41a0324b6cbdcc18985",
+      "size": 21048,
+      "tag": "app-usb_debug-v0.1.2",
+      "url": "https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/download/app-usb_debug-v0.1.2/application-usb_debug-0.1.2-xtensa-esp32s3.rte.zip",
+      "package_asset": "application-usb_debug-0.1.2-xtensa-esp32s3.rte.zip",
+      "package_sha256": "079840015b2faea20cdaba710fd43b4e03e7d91c3ecff7328747ecad9a6c6cf4",
+      "package_size": 22151,
+      "build_profile": "strip-unneeded"
     },
     {
       "id": "esp_rom_flasher",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "file_name": "esp_rom_flasher.elf",
-      "sha256": "7d44907ad01b65a9c5bd12f4c502b13d9705f1f43c1ec49f665c86d8e92cb0df",
-      "size": 14136,
-      "tag": "app-esp_rom_flasher-v1.1.0",
-      "url": "https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/download/app-esp_rom_flasher-v1.1.0/esp_rom_flasher.elf"
+      "sha256": "970cf8483e8c7efcb35c73fb498e0b74d035ec24d60cf694433648c5bb44d508",
+      "size": 12504,
+      "tag": "app-esp_rom_flasher-v1.1.1",
+      "url": "https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/download/app-esp_rom_flasher-v1.1.1/application-esp_rom_flasher-1.1.1-xtensa-esp32s3.rte.zip",
+      "package_asset": "application-esp_rom_flasher-1.1.1-xtensa-esp32s3.rte.zip",
+      "package_sha256": "ce934123869cd7ddba774af741841c1ad3c8e2d0716c72335971a5228044c9d0",
+      "package_size": 13668,
+      "build_profile": "strip-unneeded"
     }
   ],
-  "reader_source_commit": "3300229d0a232b4e6047a7c93b2f518c033c3cfa",
-  "release_snapshot_checked_at": "2026-10-01T02:42:00Z"
+  "reader_source_commit": "82caa0997e913f01c1f5f9ab942d056bc9f04a82",
+  "release_snapshot_checked_at": "2026-10-02T05:03:29Z",
+  "release_index_commit": "5caf9b7fd98700f9e7ee5b69406c6c163c6e7206"
 }
