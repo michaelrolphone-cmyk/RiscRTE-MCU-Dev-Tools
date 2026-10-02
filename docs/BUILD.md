@@ -19,25 +19,27 @@ The release-parity check deliberately requires the full three-tool inventory.
 
 ## Published-build profile and version integrity
 
-These three releases predate Reader's symbol-stripping change. The current
-Reader default strips unneeded symbols; that produces smaller, different ELFs
-under unchanged app versions. This repository intentionally uses the historical
-**unstripped C11/PIC/shared/SysV-hash profile** to reproduce the existing released
-bytes exactly. It still checks all dynamic imports and validates actual ELF
-structure. It does not publish new stripped payloads under old versions.
+The previous published versions (Serial Monitor 1.2.6, USB Debug 0.1.1,
+Firmware Flasher 1.1.0) retain their exact **unstripped C11/PIC/shared/SysV-hash**
+payload identities in `sdk/release-baseline.json` as historical rows. Reader's
+current releases use `--strip-unneeded`; all three current manifests carry
+version advances (Serial Monitor 1.2.7, USB Debug 0.1.2, Firmware Flasher 1.1.1).
+The baseline assigns the profile to each exact `(id, version)`; build selection
+fails on a version/profile mismatch. Both profiles retain dynamic-import and
+actual ELF-structure validation.
 
-Serial Monitor remains 1.2.6, USB Debug 0.1.1 and Firmware Flasher 1.1.0: all
-app/helper source and installed manifest metadata are unchanged, and all three
-produced ELFs match their published sizes/SHA-256. A future source, metadata or
-payload-changing build profile must advance the corresponding app version before
-publication. No release is performed by this development workflow.
+The current three development ELFs must match the nested ELF hashes and sizes
+recorded by the pinned release index and its package ZIP assets. The build emits
+ELFs and JSON sidecars only; this workflow does not create or publish ZIPs,
+releases, or catalogs.
 
 ## SDK provenance and outputs
 
 `sdk/baseline.json` pins required API and transitive provider headers, limited
 compiler helpers, manifest/integrity checks, real firmware ELF validator and
-five upstream fixtures by Git blob and SHA-256. Source is Reader
-`3300229d0a232b4e6047a7c93b2f518c033c3cfa`. Original license/comments are retained.
+five upstream fixtures by Git blob and SHA-256. The pinned SDK source is Reader
+`3300229d0a232b4e6047a7c93b2f518c033c3cfa`; app manifests and sources are audited
+at current Reader master `82caa0997e913f01c1f5f9ab942d056bc9f04a82`. Original license/comments are retained.
 The public app/libc/compat export list is derived from the recorded source table
 blobs; it does not use the privileged-provider inventory or grant capability
 access. Build/audit wrappers are adapted from Productivity main `0a2d189f` and
@@ -46,7 +48,7 @@ filenames handled explicitly.
 
 Full output contains three ELF+JSON pairs, `build-evidence.json` and
 `release-parity.json`. Evidence records source/manifest/helper blobs, version,
-actual compiler and build profile, SDK/repository commits and dirty state,
+per-app build profile, actual compiler, SDK/repository commits and dirty state,
 length and SHA-256. CI uploads a 14-day development artifact, never an install
 catalog. Baseline changes, unsafe/duplicate inventory entries, unknown imports,
 manifest/version mismatch, invalid ELF structure and published-byte drift fail.
