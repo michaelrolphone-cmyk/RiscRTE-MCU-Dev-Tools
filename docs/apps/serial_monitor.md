@@ -71,3 +71,8 @@ Serial Monitor requires a working `serial.port` provider. For USB serial hardwar
 Reader master `82caa0997e913f01c1f5f9ab942d056bc9f04a82` advances this package manifest from 1.2.6 to 1.2.7 (manifest blob `71977dc7608651136f1a26a37c4416cd4eb03be1`). The C source plus implementation include `Apps/serial_monitor_implementation.inc` remains byte-identical to the external baseline; no application behavior or API source is copied. Its current published [release tag](https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/tag/app-serial_monitor-v1.2.7) contains `application-serial_monitor-1.2.7-xtensa-esp32s3.rte.zip` (22,058 bytes, SHA-256 `b30f9eb12c1cfea80463816abcf35ec9358b6c43cdff642eeba45eba72409206`). The package index records the nested ELF as 20,952 bytes, SHA-256 `c3b95464ade5005e98d060fd84d93d7682f72d1bdb7a502b0e4f4f6d76d2c67a`.
 
 The independent build selects the current `strip-unneeded` ELF profile by exact app manifest version and checks the finished file against the nested published ELF identity. Historical pre-strip versions remain recorded as `unstripped` in `sdk/release-baseline.json`. The exact-head Actions check validates the profile and actual bytes; this evidence is source/build parity only, not U1 ZIP/cutover or hardware qualification.
+
+
+## Master parity note
+
+The external build snapshot carries Reader master `T5UiApi.h`'s append-only optional `get_viewport` member (source commit `82caa0997e913f01c1f5f9ab942d056bc9f04a82`). This app does not call that optional member. The external `T5StreamApi.h` service-borrowing behavior is retained.
