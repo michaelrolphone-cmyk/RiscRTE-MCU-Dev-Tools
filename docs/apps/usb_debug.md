@@ -2,7 +2,7 @@
 
 ## Purpose
 
-USB Debug is a hardware-inspection and logging tool for USB devices attached through the RiscRTE USB host stack. Its manifest identifies `usb_debug.elf`, version **0.1.1**, minimum firmware **1.2.67**, categories `Developer`, `Diagnostics`, and `Hardware`.
+USB Debug is a hardware-inspection and logging tool for USB devices attached through the RiscRTE USB host stack. Its manifest identifies `usb_debug.elf`, version **0.1.2**, minimum firmware **1.2.67**, categories `Developer`, `Diagnostics`, and `Hardware`.
 
 The manifest declares `usb.host >=1` as an optional capability. The app is designed to inspect devices when that capability/provider is available.
 
@@ -67,13 +67,8 @@ These are implementation limits in the current source, not general RiscRTE USB l
 - `Apps/usb_debug.c`
 - `Apps/usb_debug.json`
 
-## Independent migration verification
+## Current master and published artifact
 
-Source, manifest and recorded helpers match Reader master
-`3300229d0a232b4e6047a7c93b2f518c033c3cfa`. Independent builds preserve the
-historical unstripped build profile and exactly reproduce this app's existing
-published ELF. Versions remain unchanged because source, installed metadata and
-published payload bytes are unchanged. See [build/tests](../BUILD.md),
-[artifact comparison](../release-parity.json) and
-[readiness/removal criteria](../MIGRATION_READINESS.md). Current-master parity
-does not imply future U1 packaging/runtime acceptance or hardware qualification.
+Reader master `82caa0997e913f01c1f5f9ab942d056bc9f04a82` advances this package manifest from 0.1.1 to 0.1.2 (manifest blob `7a8f9d55521a0671a8c7f96195c40750fbea0c97`). The C source remains byte-identical to the external baseline; no application behavior or API source is copied. Its current published [release tag](https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/tag/app-usb_debug-v0.1.2) contains `application-usb_debug-0.1.2-xtensa-esp32s3.rte.zip` (22,151 bytes, SHA-256 `079840015b2faea20cdaba710fd43b4e03e7d91c3ecff7328747ecad9a6c6cf4`). The package index records the nested ELF as 21,048 bytes, SHA-256 `09d8498d744293ada2cc3bed9443b3158fb0da5c91bcf41a0324b6cbdcc18985`.
+
+The independent build selects the current `strip-unneeded` ELF profile by exact app manifest version and checks the finished file against the nested published ELF identity. Historical pre-strip versions remain recorded as `unstripped` in `sdk/release-baseline.json`. The exact-head Actions check validates the profile and actual bytes; this evidence is source/build parity only, not U1 ZIP/cutover or hardware qualification.
