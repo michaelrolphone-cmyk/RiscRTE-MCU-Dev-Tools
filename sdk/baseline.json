@@ -196,5 +196,5 @@
       "git_blob": "789e3b2f126957e602bd0661a4785550c5ea8159"
     }
   ],
-  "build_profile": "published-unstripped-c11-pic-sysv"
+  "build_profile": "published-version-scoped-c11-pic-sysv"
 }
