@@ -158,14 +158,16 @@
     {
       "path": "sdk/driver/RiscUsbInterruptV1.h",
       "upstream_path": "sdk/driver/RiscUsbInterruptV1.h",
-      "git_blob": "ace65e02ed10daa9d452cbd6e789c6e0a6b01135",
-      "sha256": "a2501d9e27f700de155172f7139282e0b5848b1149e5b4f89870502d0b2f2ee2"
+      "git_blob": "0c46bcae5f9bb970af95e0bf33dba0fe30958c87",
+      "sha256": "bfdd4644feaf3f4dc5d06070f052104579d3fb902e27e707f27943d7bf22815e",
+      "upstream_commit": "82caa0997e913f01c1f5f9ab942d056bc9f04a82"
     },
     {
       "path": "sdk/driver/RiscUsbControllerV1.h",
       "upstream_path": "sdk/driver/RiscUsbControllerV1.h",
-      "git_blob": "348b5b478f23f5893ff33dffcb4359f694712fd0",
-      "sha256": "2fb2908caee99b0822838956f33cf8302db9d2cbd0600a9eed21fcce5f68232b"
+      "git_blob": "7b2ecba98cd431484296327c1d8d701cad431aea",
+      "sha256": "226f083493085ecdcaa21a7c3bf1c269640b7d1ebaa099e7217fb64124f1dbed",
+      "upstream_commit": "82caa0997e913f01c1f5f9ab942d056bc9f04a82"
     },
     {
       "path": "sdk/driver/RiscUsbProviderV1.h",
