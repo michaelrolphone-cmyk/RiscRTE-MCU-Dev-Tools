@@ -2,15 +2,12 @@
 
 Audited 2026-10-02 against read-only Reader master
 `82caa0997e913f01c1f5f9ab942d056bc9f04a82`; external base
-`70fd3ad39eaacdb736a16de5f351c128b208f255`. The three current source deltas
-are manifest-only version advances. Their C sources and recorded helper are
-unchanged from the external base; the external Stream/UI API snapshots remain
-untouched, including their existing local differences.
+`70fd3ad39eaacdb736a16de5f351c128b208f255`. The three app-source deltas are manifest-only version advances; their C sources and recorded helper are unchanged. A separate source-aware sync appended Reader's optional `get_viewport` member to `T5UiApi.h` for byte-faithful current builds. Per-file provenance is recorded in [source-drift.json](source-drift.json). The external `T5StreamApi.h` USB-service borrowing/close behavior remains intact.
 
 | Tool | Source/manifest status | Version | Published package / nested ELF identity | External profile |
 | --- | --- | --- | --- | --- |
-| [Serial Monitor](apps/serial_monitor.md) | C and include unchanged; current manifest synchronized | 1.2.7 | ZIP `b30f9eb1…`; ELF `c3b95464…` / 20,952 B | strip-unneeded |
-| [USB Debug](apps/usb_debug.md) | C unchanged; current manifest synchronized | 0.1.2 | ZIP `07984001…`; ELF `09d8498d…` / 21,048 B | strip-unneeded |
+| [Serial Monitor](apps/serial_monitor.md) | C and helper unchanged; manifest and shared UI API synchronized | 1.2.7 | ZIP `b30f9eb1…`; ELF `c3b95464…` / 20,952 B | strip-unneeded |
+| [USB Debug](apps/usb_debug.md) | C unchanged; manifest and shared UI API synchronized | 0.1.2 | ZIP `07984001…`; ELF `09d8498d…` / 21,048 B | strip-unneeded |
 | [Firmware Flasher](apps/esp_rom_flasher.md) | C and tracked helper unchanged; current manifest synchronized | 1.1.1 | ZIP `ce934123…`; ELF `970cf848…` / 12,504 B | strip-unneeded |
 
 The release ZIP digests and sizes match Reader release-index commit
@@ -24,9 +21,7 @@ identity. Source drift and current per-tool release metadata are in
 [release-parity.json](release-parity.json).
 
 The PR's full independent build, host fixtures, ELF validation and nested
-published-byte comparisons must pass on the exact head before merge. The pinned
-SDK/compiler, provider fixtures, external app implementations, and external
-T5Stream/T5Ui SDK variants are preserved. No broad SDK rebase is implied.
+published-byte comparisons must pass on the exact head before merge. The pinned SDK/compiler, provider fixtures, and external app implementations are preserved. The `T5UiApi.h` update is append-only; the external `T5StreamApi.h` service-borrowing fix remains. No broad SDK rebase is implied.
 
 ## Daily tool behavior
 
