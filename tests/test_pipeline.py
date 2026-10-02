@@ -23,10 +23,15 @@ class PipelineTests(unittest.TestCase):
         provenance = json.loads((ROOT / 'docs/source-drift.json').read_text())['files']
         converged = [row for row in provenance if row['state'] == 'converged']
         unchanged = [row for row in provenance if row['state'] == 'unchanged']
+        sdk_provenance = json.loads((ROOT / 'docs/source-drift.json').read_text())['sdk_files']
         self.assertEqual([row['path'] for row in converged],
                          ['Apps/serial_monitor.json', 'Apps/usb_debug.json',
                           'Apps/esp_rom_flasher.json'])
         self.assertEqual(len(unchanged), 5)
+        self.assertEqual(sdk_provenance[0]['path'], 'lib/NativeApps/include/T5UiApi.h')
+        self.assertEqual(sdk_provenance[0]['state'], 'converged')
+        self.assertEqual(sdk_provenance[0]['upstream_commit'],
+                         '82caa0997e913f01c1f5f9ab942d056bc9f04a82')
 
     def test_version_scoped_build_profiles(self):
         baseline = json.loads((ROOT / 'sdk/release-baseline.json').read_text())
