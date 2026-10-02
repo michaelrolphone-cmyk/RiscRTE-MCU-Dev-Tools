@@ -1,5 +1,5 @@
 {
-  "reader_commit": "3300229d0a232b4e6047a7c93b2f518c033c3cfa",
+  "reader_commit": "82caa0997e913f01c1f5f9ab942d056bc9f04a82",
   "files": [
     {
       "path": "Apps/serial_monitor.c",
@@ -11,9 +11,9 @@
     {
       "path": "Apps/serial_monitor.json",
       "baseline_blob": "e87ad5a97e6a16b12c1cc78b2c02c5249b5c09a6",
-      "external_blob": "e87ad5a97e6a16b12c1cc78b2c02c5249b5c09a6",
-      "upstream_blob": "e87ad5a97e6a16b12c1cc78b2c02c5249b5c09a6",
-      "state": "unchanged"
+      "external_blob": "71977dc7608651136f1a26a37c4416cd4eb03be1",
+      "upstream_blob": "71977dc7608651136f1a26a37c4416cd4eb03be1",
+      "state": "converged"
     },
     {
       "path": "Apps/serial_monitor_implementation.inc",
@@ -32,9 +32,9 @@
     {
       "path": "Apps/usb_debug.json",
       "baseline_blob": "49fe5b33c8a549387152cffbc29b0ef97e2f2c2a",
-      "external_blob": "49fe5b33c8a549387152cffbc29b0ef97e2f2c2a",
-      "upstream_blob": "49fe5b33c8a549387152cffbc29b0ef97e2f2c2a",
-      "state": "unchanged"
+      "external_blob": "7a8f9d55521a0671a8c7f96195c40750fbea0c97",
+      "upstream_blob": "7a8f9d55521a0671a8c7f96195c40750fbea0c97",
+      "state": "converged"
     },
     {
       "path": "Apps/esp_rom_flasher.c",
@@ -46,9 +46,9 @@
     {
       "path": "Apps/esp_rom_flasher.json",
       "baseline_blob": "8a21fb19b852629bf29dd809d654e09b07ad7fb8",
-      "external_blob": "8a21fb19b852629bf29dd809d654e09b07ad7fb8",
-      "upstream_blob": "8a21fb19b852629bf29dd809d654e09b07ad7fb8",
-      "state": "unchanged"
+      "external_blob": "9b1e80f73d4ff102f6675c54b799c54612b8c82d",
+      "upstream_blob": "9b1e80f73d4ff102f6675c54b799c54612b8c82d",
+      "state": "converged"
     },
     {
       "path": "Apps/esp_rom_md5.h",
