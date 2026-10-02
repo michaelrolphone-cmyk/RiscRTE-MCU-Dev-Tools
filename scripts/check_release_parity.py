@@ -50,7 +50,16 @@ def main():
     report = {'reader_source_commit': baseline['reader_source_commit'], 'apps': rows}
     (ROOT / 'dist/apps/release-parity.json').write_text(json.dumps(report, indent=2) + '\n')
     if failed:
-        raise ValueError('Required published-byte parity failed: ' + ', '.join(failed))
+        diagnostics = []
+        for row in rows:
+            if row['id'] in failed:
+                diagnostics.append(
+                    f"{row['id']} v{row['version']}: built {row['built_sha256']} "
+                    f"({(ROOT / 'dist/apps' / (row['id'] + '.elf')).stat().st_size} bytes), "
+                    f"published {row['published_sha256']} "
+                    f"({next(app['size'] for app in baseline['apps'] if app['id'] == row['id'])} bytes)"
+                )
+        raise ValueError('Required published-byte parity failed: ' + '; '.join(diagnostics))
     print(f"Published-byte parity: {sum(row['byte_parity'] for row in rows)}/{len(rows)}; all {len(required)} required synchronized apps match")
 
 
