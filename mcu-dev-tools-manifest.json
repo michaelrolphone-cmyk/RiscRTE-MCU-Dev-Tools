@@ -5,14 +5,14 @@
   "tools": [
     {
       "id": "serial_monitor",
-      "version": "1.2.6",
+      "version": "1.2.7",
       "min_firmware_version": "1.2.31",
       "classification": "mcu-dev-tool",
       "file_name": "serial_monitor.elf",
       "source_path": "Apps/serial_monitor.c",
       "manifest_path": "Apps/serial_monitor.json",
       "upstream_source_sha": "d32911812d47d8ed69d0e9b8d7bd8c741835df58",
-      "upstream_manifest_sha": "e87ad5a97e6a16b12c1cc78b2c02c5249b5c09a6",
+      "upstream_manifest_sha": "71977dc7608651136f1a26a37c4416cd4eb03be1",
       "additional_sources": [
         {
           "path": "Apps/serial_monitor_implementation.inc",
@@ -24,27 +24,27 @@
     },
     {
       "id": "usb_debug",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "min_firmware_version": "1.2.67",
       "classification": "mcu-dev-tool",
       "file_name": "usb_debug.elf",
       "source_path": "Apps/usb_debug.c",
       "manifest_path": "Apps/usb_debug.json",
       "upstream_source_sha": "76157ba88ca1851cd846cca49627e0aa535e6ff5",
-      "upstream_manifest_sha": "49fe5b33c8a549387152cffbc29b0ef97e2f2c2a",
+      "upstream_manifest_sha": "7a8f9d55521a0671a8c7f96195c40750fbea0c97",
       "source": "Apps/usb_debug.c",
       "manifest": "Apps/usb_debug.json"
     },
     {
       "id": "esp_rom_flasher",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "min_firmware_version": "1.2.69",
       "classification": "mcu-dev-tool",
       "file_name": "esp_rom_flasher.elf",
       "source_path": "Apps/esp_rom_flasher.c",
       "manifest_path": "Apps/esp_rom_flasher.json",
       "upstream_source_sha": "19c8cb2a1918fb7b8453ea61802c25782c46a925",
-      "upstream_manifest_sha": "8a21fb19b852629bf29dd809d654e09b07ad7fb8",
+      "upstream_manifest_sha": "9b1e80f73d4ff102f6675c54b799c54612b8c82d",
       "additional_sources": [
         {
           "path": "Apps/esp_rom_md5.h",
@@ -55,5 +55,5 @@
       "manifest": "Apps/esp_rom_flasher.json"
     }
   ],
-  "upstream_commit": "3300229d0a232b4e6047a7c93b2f518c033c3cfa"
+  "upstream_commit": "82caa0997e913f01c1f5f9ab942d056bc9f04a82"
 }
