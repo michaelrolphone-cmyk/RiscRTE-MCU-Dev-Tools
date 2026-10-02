@@ -49,5 +49,37 @@
   ],
   "reader_source_commit": "82caa0997e913f01c1f5f9ab942d056bc9f04a82",
   "release_snapshot_checked_at": "2026-10-02T05:03:29Z",
-  "release_index_commit": "5caf9b7fd98700f9e7ee5b69406c6c163c6e7206"
+  "release_index_commit": "5caf9b7fd98700f9e7ee5b69406c6c163c6e7206",
+  "historical_apps": [
+    {
+      "id": "serial_monitor",
+      "version": "1.2.6",
+      "file_name": "serial_monitor.elf",
+      "sha256": "76b13092fac7713676bd0aa77104b332e23dc406da7a629394ab2bdfe1830d5f",
+      "size": 24136,
+      "tag": "app-serial_monitor-v1.2.6",
+      "url": "https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/download/app-serial_monitor-v1.2.6/serial_monitor.elf",
+      "build_profile": "unstripped"
+    },
+    {
+      "id": "usb_debug",
+      "version": "0.1.1",
+      "file_name": "usb_debug.elf",
+      "sha256": "a2f2db52df3821df24f2d4c168f14aaff93c5278624bf2e3e0071958fda102d7",
+      "size": 22988,
+      "tag": "app-usb_debug-v0.1.1",
+      "url": "https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/download/app-usb_debug-v0.1.1/usb_debug.elf",
+      "build_profile": "unstripped"
+    },
+    {
+      "id": "esp_rom_flasher",
+      "version": "1.1.0",
+      "file_name": "esp_rom_flasher.elf",
+      "sha256": "7d44907ad01b65a9c5bd12f4c502b13d9705f1f43c1ec49f665c86d8e92cb0df",
+      "size": 14136,
+      "tag": "app-esp_rom_flasher-v1.1.0",
+      "url": "https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/download/app-esp_rom_flasher-v1.1.0/esp_rom_flasher.elf",
+      "build_profile": "unstripped"
+    }
+  ]
 }
