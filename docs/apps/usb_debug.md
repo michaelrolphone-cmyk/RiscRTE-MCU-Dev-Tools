@@ -77,3 +77,8 @@ The independent build selects the current `strip-unneeded` ELF profile by exact 
 ## Master parity note
 
 The external build snapshot carries Reader master `T5UiApi.h`'s append-only optional `get_viewport` member (source commit `82caa0997e913f01c1f5f9ab942d056bc9f04a82`). This app does not call that optional member. The external `T5StreamApi.h` service-borrowing behavior is retained.
+
+
+## Master parity note
+
+The independent build snapshot includes Reader master (`82caa0997e913f01c1f5f9ab942d056bc9f04a82`) discovery ABI suffixes from `RiscUsbControllerV1.h` and the corresponding prefix type update in `RiscUsbInterruptV1.h`. Their base discovery layout remains prefix-compatible; the app keeps using its existing host discovery and diagnostic interfaces. Shared API provenance is recorded in [source-drift.json](../source-drift.json).
