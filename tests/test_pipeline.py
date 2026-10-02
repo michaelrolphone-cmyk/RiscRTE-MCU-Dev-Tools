@@ -19,8 +19,10 @@ class PipelineTests(unittest.TestCase):
         check_sdk()
         rows = audit()['files']
         self.assertEqual(len(rows), 8)
-        converged = [row for row in rows if row['state'] == 'converged']
-        unchanged = [row for row in rows if row['state'] == 'unchanged']
+        self.assertTrue(all(row['state'] == 'unchanged' for row in rows))
+        provenance = json.loads((ROOT / 'docs/source-drift.json').read_text())['files']
+        converged = [row for row in provenance if row['state'] == 'converged']
+        unchanged = [row for row in provenance if row['state'] == 'unchanged']
         self.assertEqual([row['path'] for row in converged],
                          ['Apps/serial_monitor.json', 'Apps/usb_debug.json',
                           'Apps/esp_rom_flasher.json'])
