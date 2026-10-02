@@ -1,53 +1,58 @@
 # MCU Dev Tools migration readiness
 
-Audited 2026-10-01 against read-only Reader master
-`3300229d0a232b4e6047a7c93b2f518c033c3cfa`.
-Rechecked newer master `a5e2db59077cc889079668dc9cd7428b08bc32a1`: all
-app inputs, pinned SDK/fixtures and export-source inputs are unchanged.
+Audited 2026-10-02 against read-only Reader master
+`82caa0997e913f01c1f5f9ab942d056bc9f04a82`; external base
+`70fd3ad39eaacdb736a16de5f351c128b208f255`. The three app-source deltas are manifest-only version advances; their C sources and recorded helper are unchanged. A separate source-aware sync updated `T5UiApi.h` with Reader's optional `get_viewport` suffix and refreshed `RiscUsbControllerV1.h` plus `RiscUsbInterruptV1.h` to the current prefix-compatible discovery ABI required by USB Debug. Per-file provenance is recorded in [source-drift.json](source-drift.json). The external `T5StreamApi.h` USB-service borrowing/close behavior remains intact.
 
-| Tool | Current-master source/manifest/helper | Version | Independent published-byte build | Documentation |
+| Tool | Source/manifest status | Version | Published package / nested ELF identity | External profile |
 | --- | --- | --- | --- | --- |
-| [Serial Monitor](apps/serial_monitor.md) | Exact, 3 inputs | 1.2.6 unchanged | Pass, historical unstripped profile | Interfaces, terminal limits, failure/retry behavior |
-| [USB Debug](apps/usb_debug.md) | Exact, 2 inputs | 0.1.1 unchanged | Pass, historical unstripped profile | Descriptor/claim/log behavior |
-| [Firmware Flasher](apps/esp_rom_flasher.md) | Exact, 3 inputs | 1.1.0 unchanged | Pass, historical unstripped profile | ESP/MSP boundaries, parser/cancellation, unused helper |
+| [Serial Monitor](apps/serial_monitor.md) | C and helper unchanged; manifest and shared UI API synchronized | 1.2.7 | ZIP `b30f9eb1…`; ELF `c3b95464…` / 20,952 B | strip-unneeded |
+| [USB Debug](apps/usb_debug.md) | C unchanged; manifest and shared UI/discovery ABI synchronized | 0.1.2 | ZIP `07984001…`; ELF `09d8498d…` / 21,048 B | strip-unneeded |
+| [Firmware Flasher](apps/esp_rom_flasher.md) | C and tracked helper unchanged; current manifest synchronized | 1.1.1 | ZIP `ce934123…`; ELF `970cf848…` / 12,504 B | strip-unneeded |
 
-All eight existing external inputs already matched Reader; no blind source copy,
-external fix overwrite or app version change was necessary. See the exact
-[blob audit](source-drift.json). [Build/test instructions](BUILD.md) explain the
-pinned SDK and historical profile; [release comparison](release-parity.json)
-records actual built and published hashes. CI must validate the final PR head;
-local evidence alone is not a claim that CI/merge passed.
+The release ZIP digests and sizes match Reader release-index commit
+`5caf9b7fd98700f9e7ee5b69406c6c163c6e7206` and the public non-draft release
+assets. The index's nested ELF identities are the independent pipeline's exact
+published-byte gates. Previous unstripped versions and hashes remain in
+`sdk/release-baseline.json` for lineage. The profile is selected from exact app
+ID/version records, so the three new releases do not overwrite historical byte
+identity. Source drift and current per-tool release metadata are in
+[source-drift.json](source-drift.json) and
+[release-parity.json](release-parity.json).
 
-## Why this matters for daily tools
+The PR's full independent build, host fixtures, ELF validation and nested
+published-byte comparisons must pass on the exact head before merge. The pinned SDK/compiler, provider fixtures, and external app implementations are preserved. The `T5UiApi.h` update is append-only; the external `T5StreamApi.h` service-borrowing fix remains. No broad SDK rebase is implied.
 
-Independent builds now preserve the usable Serial Monitor terminal and baud
-configuration behavior, USB inspection/logging, and ESP/MSP programming front
-end without requiring a firmware checkout. Focused fixtures exercise those
-boundaries and failure cases, but a passing mock test does not prove a physical
-programming session. The current-master API dependencies remain explicit.
+## Daily tool behavior
 
-## Open requirements before safe Reader removal
+The scope only updates package manifest identities and the version-aware ELF
+build profile. Serial terminal/reconnect behavior, USB descriptor/logging paths,
+and ESP/MSP flasher source behavior remain unchanged. Passing host tests or
+artifact parity does not establish physical programming, serial transport,
+device hotplug, or hardware behavior.
 
-None of these apps is approved for Reader removal or live external cutover.
+## Readiness boundary
 
-1. Freeze the accepted firmware/SDK/provider baseline and reconcile master/U1
-   changes without discarding external fixes. Serial Monitor's current serial
-   facade, USB Debug's host diagnostic interface, and Flasher's ESP/MSP paths
-   must each be checked; do not assume identical capability declarations.
-2. Implement/validate the accepted U1 per-app `.rte.zip`, generic manifests/index,
-   per-ID install layout and resource packaging in a separately authorized
-   external release pipeline. Current output remains development ELF+JSON.
-3. Verify target-runtime discovery, install/update, rollback/recovery and removal
-   with the actual external provider set. Preserve app identity/version ordering.
-4. Establish daily-use acceptance: serial send/receive, baud changes, unplug/
-   reconnect and missing class drivers; USB descriptors/claim cleanup and saved
-   logs; intended ESP/MSP image validation, explicit programming confirmation,
-   cancellation, connection loss and successful verification on intended hardware.
-5. Verify external asset availability/digests and a safe rollback before changing
-   any live catalog. Obtain explicit owner authorization for the external-provider
-   switch and Reader duplicate source/build/catalog deletion.
+This documents current Reader master source parity and published artifact
+identity only. It does not authorize or claim U1 package-format migration, live
+catalog publication, provider runtime cutover, source deletion, or device
+qualification. Those remain separate milestones. External readiness criteria
+and their required runtime/hardware evidence are retained below.
 
-Prospective U1 ABI/package/runtime compatibility remains unverified. No provider
-ownership claim is inferred from the legacy app facades, and no permanent
-firmware-side substitute is established by this snapshot. No releases, actual
-flashing, Reader edits, live catalog changes or cutover occur here.
+## Existing external runtime/removal requirements
+
+1. Freeze the accepted firmware/SDK/provider baseline and reconcile future
+   master/U1 changes without discarding external fixes.
+2. Separately authorize and validate per-app `.rte.zip`, generic manifests,
+   index entries, per-ID install layout, and any resource packaging.
+3. Verify target-runtime discovery, install/update, rollback/recovery, and
+   removal with the actual external provider set.
+4. Establish daily-use acceptance for serial send/receive, baud changes,
+   unplug/reconnect, USB descriptors and logging, and intended ESP/MSP images,
+   cancellation, connection loss, and successful programming on hardware.
+5. Verify external asset availability and rollback before any live catalog
+   change; obtain explicit owner authorization before external-provider cutover
+   or duplicate Reader source/build/catalog removal.
+
+No releases, live catalog changes, U1 writes, actual flashing, Reader edits, or
+cutover occur in this parity refresh.

@@ -13,6 +13,8 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('source', type=pathlib.Path)
 parser.add_argument('--output', type=pathlib.Path, required=True)
 parser.add_argument('--require-manifest', action='store_true')
+parser.add_argument('--strip-unneeded', action='store_true',
+                    help='Apply the current published ELF symbol-stripping profile')
 parser.add_argument('--cc', default=os.environ.get('NATIVE_APP_CC'))
 args = parser.parse_args()
 manifest = None
@@ -32,6 +34,7 @@ flags = [cc, '-std=c11', '-Os', '-fPIC', '-mtext-section-literals', '-mlongcalls
          '-I' + str(repo / 'lib/NativeApps/include'),
          '-I' + str(repo / 'sdk/driver'), '-Wl,--hash-style=sysv']
 readelf = cc.replace('gcc', 'readelf')
+strip = cc.replace('gcc', 'strip')
 
 
 def build(support=()):
@@ -77,6 +80,10 @@ validate_dynamic_abi(info)
 # All dynamic imports and actual ELF structure are still validated.
 info = subprocess.check_output([readelf, '--dyn-syms', '--wide', str(args.output)], text=True)
 validate_dynamic_abi(info)
+if args.strip_unneeded:
+    subprocess.run([strip, '--strip-unneeded', str(args.output)], check=True)
+    info = subprocess.check_output([readelf, '--dyn-syms', '--wide', str(args.output)], text=True)
+    validate_dynamic_abi(info)
 print(info)
 if manifest:
     shutil.copyfile(manifest, args.output.with_suffix('.json'))

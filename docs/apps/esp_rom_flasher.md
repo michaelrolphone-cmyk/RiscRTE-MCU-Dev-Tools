@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Firmware Flasher programs firmware images into supported external microcontrollers through RiscRTE programming providers. Its manifest identifies `esp_rom_flasher.elf`, version **1.1.0**, minimum firmware **1.2.69**, categories `Firmware`, `Developer`, and `Hardware`.
+Firmware Flasher programs firmware images into supported external microcontrollers through RiscRTE programming providers. Its manifest identifies `esp_rom_flasher.elf`, version **1.1.1**, minimum firmware **1.2.69**, categories `Firmware`, `Developer`, and `Hardware`.
 
 Despite the historical source filename, the current app supports both ESP ROM-bootloader programming and MSP430FR TI-TXT programming.
 
@@ -58,13 +58,13 @@ Actual electrical transport and target programming are not implemented in the ap
 - `Apps/esp_rom_flasher.json`
 - `Apps/esp_rom_md5.h` — retained historical helper; the current app does not include it or implement ESP MD5 locally
 
-## Independent migration verification
+## Current master and published artifact
 
-Source, manifest and recorded helpers match Reader master
-`3300229d0a232b4e6047a7c93b2f518c033c3cfa`. Independent builds preserve the
-historical unstripped build profile and exactly reproduce this app's existing
-published ELF. Versions remain unchanged because source, installed metadata and
-published payload bytes are unchanged. See [build/tests](../BUILD.md),
-[artifact comparison](../release-parity.json) and
-[readiness/removal criteria](../MIGRATION_READINESS.md). Current-master parity
-does not imply future U1 packaging/runtime acceptance or hardware qualification.
+Reader master `82caa0997e913f01c1f5f9ab942d056bc9f04a82` advances this package manifest from 1.1.0 to 1.1.1 (manifest blob `9b1e80f73d4ff102f6675c54b799c54612b8c82d`). The C source plus tracked helper `Apps/esp_rom_md5.h` remains byte-identical to the external baseline; no application behavior or API source is copied. Its current published [release tag](https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/tag/app-esp_rom_flasher-v1.1.1) contains `application-esp_rom_flasher-1.1.1-xtensa-esp32s3.rte.zip` (13,668 bytes, SHA-256 `ce934123869cd7ddba774af741841c1ad3c8e2d0716c72335971a5228044c9d0`). The package index records the nested ELF as 12,504 bytes, SHA-256 `970cf8483e8c7efcb35c73fb498e0b74d035ec24d60cf694433648c5bb44d508`.
+
+The independent build selects the current `strip-unneeded` ELF profile by exact app manifest version and checks the finished file against the nested published ELF identity. Historical pre-strip versions remain recorded as `unstripped` in `sdk/release-baseline.json`. The exact-head Actions check validates the profile and actual bytes; this evidence is source/build parity only, not U1 ZIP/cutover or hardware qualification.
+
+
+## Master parity note
+
+The external build snapshot carries Reader master `T5UiApi.h`'s append-only optional `get_viewport` member (source commit `82caa0997e913f01c1f5f9ab942d056bc9f04a82`). This app does not call that optional member. The external `T5StreamApi.h` service-borrowing behavior is retained.

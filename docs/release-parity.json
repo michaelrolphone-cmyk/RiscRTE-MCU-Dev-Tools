@@ -1,32 +1,45 @@
 {
-  "reader_source_commit": "3300229d0a232b4e6047a7c93b2f518c033c3cfa",
+  "reader_source_commit": "82caa0997e913f01c1f5f9ab942d056bc9f04a82",
   "apps": [
     {
       "id": "serial_monitor",
-      "version": "1.2.6",
-      "published_version": "1.2.6",
+      "version": "1.2.7",
+      "published_version": "1.2.7",
       "byte_parity": true,
       "required": true,
-      "built_sha256": "76b13092fac7713676bd0aa77104b332e23dc406da7a629394ab2bdfe1830d5f",
-      "published_sha256": "76b13092fac7713676bd0aa77104b332e23dc406da7a629394ab2bdfe1830d5f"
+      "built_sha256": "c3b95464ade5005e98d060fd84d93d7682f72d1bdb7a502b0e4f4f6d76d2c67a",
+      "published_sha256": "c3b95464ade5005e98d060fd84d93d7682f72d1bdb7a502b0e4f4f6d76d2c67a",
+      "build_profile": "strip-unneeded",
+      "release_asset": "application-serial_monitor-1.2.7-xtensa-esp32s3.rte.zip",
+      "release_asset_size": 22058,
+      "release_asset_sha256": "b30f9eb12c1cfea80463816abcf35ec9358b6c43cdff642eeba45eba72409206"
     },
     {
       "id": "usb_debug",
-      "version": "0.1.1",
-      "published_version": "0.1.1",
+      "version": "0.1.2",
+      "published_version": "0.1.2",
       "byte_parity": true,
       "required": true,
-      "built_sha256": "a2f2db52df3821df24f2d4c168f14aaff93c5278624bf2e3e0071958fda102d7",
-      "published_sha256": "a2f2db52df3821df24f2d4c168f14aaff93c5278624bf2e3e0071958fda102d7"
+      "built_sha256": "09d8498d744293ada2cc3bed9443b3158fb0da5c91bcf41a0324b6cbdcc18985",
+      "published_sha256": "09d8498d744293ada2cc3bed9443b3158fb0da5c91bcf41a0324b6cbdcc18985",
+      "build_profile": "strip-unneeded",
+      "release_asset": "application-usb_debug-0.1.2-xtensa-esp32s3.rte.zip",
+      "release_asset_size": 22151,
+      "release_asset_sha256": "079840015b2faea20cdaba710fd43b4e03e7d91c3ecff7328747ecad9a6c6cf4"
     },
     {
       "id": "esp_rom_flasher",
-      "version": "1.1.0",
-      "published_version": "1.1.0",
+      "version": "1.1.1",
+      "published_version": "1.1.1",
       "byte_parity": true,
       "required": true,
-      "built_sha256": "7d44907ad01b65a9c5bd12f4c502b13d9705f1f43c1ec49f665c86d8e92cb0df",
-      "published_sha256": "7d44907ad01b65a9c5bd12f4c502b13d9705f1f43c1ec49f665c86d8e92cb0df"
+      "built_sha256": "970cf8483e8c7efcb35c73fb498e0b74d035ec24d60cf694433648c5bb44d508",
+      "published_sha256": "970cf8483e8c7efcb35c73fb498e0b74d035ec24d60cf694433648c5bb44d508",
+      "build_profile": "strip-unneeded",
+      "release_asset": "application-esp_rom_flasher-1.1.1-xtensa-esp32s3.rte.zip",
+      "release_asset_size": 13668,
+      "release_asset_sha256": "ce934123869cd7ddba774af741841c1ad3c8e2d0716c72335971a5228044c9d0"
     }
-  ]
+  ],
+  "release_index_commit": "5caf9b7fd98700f9e7ee5b69406c6c163c6e7206"
 }
