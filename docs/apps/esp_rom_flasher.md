@@ -63,3 +63,8 @@ Actual electrical transport and target programming are not implemented in the ap
 Reader master `82caa0997e913f01c1f5f9ab942d056bc9f04a82` advances this package manifest from 1.1.0 to 1.1.1 (manifest blob `9b1e80f73d4ff102f6675c54b799c54612b8c82d`). The C source plus tracked helper `Apps/esp_rom_md5.h` remains byte-identical to the external baseline; no application behavior or API source is copied. Its current published [release tag](https://github.com/michaelrolphone-cmyk/T5S3-Reader/releases/tag/app-esp_rom_flasher-v1.1.1) contains `application-esp_rom_flasher-1.1.1-xtensa-esp32s3.rte.zip` (13,668 bytes, SHA-256 `ce934123869cd7ddba774af741841c1ad3c8e2d0716c72335971a5228044c9d0`). The package index records the nested ELF as 12,504 bytes, SHA-256 `970cf8483e8c7efcb35c73fb498e0b74d035ec24d60cf694433648c5bb44d508`.
 
 The independent build selects the current `strip-unneeded` ELF profile by exact app manifest version and checks the finished file against the nested published ELF identity. Historical pre-strip versions remain recorded as `unstripped` in `sdk/release-baseline.json`. The exact-head Actions check validates the profile and actual bytes; this evidence is source/build parity only, not U1 ZIP/cutover or hardware qualification.
+
+
+## Master parity note
+
+The external build snapshot carries Reader master `T5UiApi.h`'s append-only optional `get_viewport` member (source commit `82caa0997e913f01c1f5f9ab942d056bc9f04a82`). This app does not call that optional member. The external `T5StreamApi.h` service-borrowing behavior is retained.
